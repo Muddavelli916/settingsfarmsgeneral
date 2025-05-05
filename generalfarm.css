@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  
+
+}
+
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 200px;
+  background: linear-gradient(135deg, #fffcfc, #ceface);
+  transition: all 0.5s ease;
+  border-radius: 8px;
+  border-right: solid 1px #FFF3E0;
+}
+
+.sidebar.active {
+  width: 80px; /* Smaller collapsed state */
+  
+}
+
+
+.sidebar .nav-links {
+  margin-top: 15px;
+  padding-bottom: 30px; /* Added padding-bottom for nav links */
+}
+
+
+.sidebar .nav-links li {
+    position: relative;
+    list-style: none;
+    height: 50px;
+    margin-bottom: 10px; /* Adds spacing between list items */
+  }
+  
+.sidebar .nav-links li a {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  border-left: 4px solid transparent;
+  padding-bottom: 2px;
+  border: solid 1px rgb(245, 179, 233);
+  border-radius: 60px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+
+
+.sidebar .nav-links li a:hover {
+  background:white;
+  color: #2697FF;
+  border-left: 5px solid #2697FF;
+}
+
+.sidebar .nav-links li i {
+  min-width: 50px;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.sidebar .nav-links li a .links_name {
+  color: #333;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.sidebar .nav-links .log_out {
+  position: absolute;
+  
+  width: 100%;
+}
+
+.home-section {
+  position:relative;
+ background: white;
+  width: calc(100% - 200px); /* Adjusted width for sidebar */
+  left: 200px;
+  transition: all 0.5s ease;
+  border-radius: 8px;
+  border-right: 2px solid #ddd;  
+  
+  
+}
+
+.sidebar.active ~ .home-section {
+  width: calc(100% - 50px); /* Adjusted for collapsed state */
+  left: 50px;
+}
+
+.home-section nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background: linear-gradient(to left, #FCE4EC, #FFFFFF);
+  padding: 0 30px;
+  position: fixed;
+  width: calc(100% - 2px);
+  left: 2px;
+ z-index: 100;
+  transition: all 0.5s ease;
+  border-radius: 8px;
+  border-bottom: 2px solid #ddd;  
+ border-right: 2px solid #ddd;  
+border-top: 2px solid #ddd;
+  
+}
+
+
+
+.sidebar-button {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight:300;
+  cursor: pointer;
+}
+
+.sidebar-button i {
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+.search-box {
+  position: relative;
+  width: 240px;
+  height: 40px;
+}
+
+.search-box input {
+  width: 100%;
+  height: 100%;
+  padding: 0 45px 0 15px;
+  border: 2px solid #EAEAEA;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: all 0.4s ease;
+}
+
+.search-box input:focus {
+  border-color: #2697FF;
+  outline: none;
+}
+
+.search-box .bx-search {
+  position: absolute;
+  height: 100%;
+  width: 40px;
+  right: 5px;
+  top: 0;
+  background: transparent;
+  color: #2697FF;
+  font-size: 20px;
+  line-height: 45px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding-right: 30px;
+}
+
+.nav-icons i {
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-icons i:hover {
+  color: #2697FF;
+}
+
+.profile-details {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 2px solid #EAEAEA;
+  border-radius: 8px;
+  height: 50px;
+  min-width: 200px;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.profile-details img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.profile-details .admin_name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-right: 8px;
+}
+
+.profile-details i {
+  font-size: 20px;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.profile-details:hover i {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px; /* Adjust the position below the profile */
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  width: 120px;
+  display: none; /* Hidden by default */
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.dropdown-menu li:hover {
+  background: #f1f1f1;
+}
+
+.message-container {
+  position: relative;
+  display: inline-block;
+}
+
+.bx-envelope {
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Dropdown Box */
+.message-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 250px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none; /* Initially hidden */
+  padding: 10px;
+}
+
+.message-dropdown h4 {
+  margin: 0;
+  font-size: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.message-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.message-dropdown li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.message-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.message-dropdown img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message-dropdown .name {
+  font-weight: bold;
+  display: block;
+}
+
+.message-dropdown .message {
+  font-size: 14px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.notification-container {
+  position: relative;
+  display: inline-block;
+}
+
+.bx-bell {
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Notification Dropdown Box */
+.notification-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 280px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none; /* Initially hidden */
+  padding: 10px;
+  z-index: 100;
+}
+
+
+
+

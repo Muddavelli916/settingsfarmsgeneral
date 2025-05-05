@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Responsive Admin Dashboard</title>
+    <link rel="stylesheet" href="generalfarm.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .container-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding-top: 100px;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .chart-container {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .chart-box {
+        background-color: white;
+        width: 100%;
+        max-width: 400px;
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px auto;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="sidebar" style="margin-top:60px;">
+      <ul class="nav-links" style="margin-top: 40px;">
+        <li><a href="dashboard4.html" class="active"><i class='bx bx-grid-alt'></i><span class="links_name">Dashboard</span></a></li>
+        <li><a href="productshtml.html"><i class='bx bx-box'></i><span class="links_name">Product</span></a></li>
+        <li><a href="ordershtml.html"><i class='bx bx-list-ul'></i><span class="links_name">Orders</span></a></li>
+        <li><a href="analyticshtml.html"><i class='bx bx-pie-chart-alt-2'></i><span class="links_name">Analytics</span></a></li>
+        <li><a href="suppliers.html"><i class='bx bx-coin-stack'></i><span class="links_name">Supplier</span></a></li>
+        <li><a href="#"><i class='bx bx-book-alt'></i><span class="links_name">Total order</span></a></li>
+        <li><a href="settingshtml.html"><i class='bx bx-cog'></i><span class="links_name">Settings</span></a></li>
+        <li class="log_out"><a href="logoutpage.html"><i class='bx bx-log-out'></i><span class="links_name">Log out</span></a></li>
+      </ul>
+    </div>
+
+    <section class="home-section">
+      <nav>
+        <div class="logo-details" style="display: flex;">
+          <img src="C:\Users\LENOVO L480\Downloads\images-removebg-preview (3).png" 
+               style="max-height: 60px; max-width: 100px; object-fit: contain; display: block;" />
+        </div>
+
+        <div class="sidebar-button">
+          <i class='bx bx-menu sidebarBtn' style="font-size: 18px;"></i>
+        </div>
+
+        <div class="search-box">
+          <input type="text" placeholder="Search...">
+          <i class='bx bx-search'></i>
+        </div>
+
+        <div class="nav-icons">
+          <i class='bx bx-moon' title="Dark Mode"></i>
+
+          <div class="notification-container">
+            <i class='bx bx-bell' id="notificationIcon" title="Notifications"></i>
+            <div class="notification-dropdown" id="notificationDropdown">
+              <h4>New Orders</h4>
+              <ul>
+                <!-- Notification Items -->
+              </ul>
+            </div>
+          </div>
+
+          <div class="message-container">
+            <i class='bx bx-envelope' id="messageIcon" title="Messages"></i>
+            <div class="message-dropdown" id="messageDropdown">
+              <h4>Messages</h4>
+              <ul>
+                <!-- Message Items -->
+              </ul>
+            </div>
+          </div>
+
+          <i class='bx bx-fullscreen' id="fullscreenIcon" title="Enlarge"></i>
+        </div>
+
+        <div class="profile-details">
+          <img src="https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-600nw-1714666150.jpg" alt="Profile">
+          <span class="admin_name" id="welcomeMessage">Loading...</span>
+          <i class='bx bx-chevron-down' id="dropdownIcon"></i>
+          <ul class="dropdown-menu" id="dropdownMenu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="container-row">
+        <div style="display: flex; justify-content: center; text-align: center;">
+        <h1>Dairy Farm Settings</h1>
+        </div>
+      
+      </div>
+
+      <div style=" padding: 20px">
+        
+      
+        <form id="farmForm">
+          <label for="farmName">Farm Name</label><br>
+          <input type="text" id="farmName" required style="width: 100%;"><br><br>
+      
+          <label for="farmLocation">Farm Location</label><br>
+          <input type="text" id="farmLocation" required style="width: 100%;"><br><br>
+      
+          <label for="supplierName">Supplier Name</label><br>
+          <input type="text" id="supplierName" required  style="width: 100%;"><br><br>
+      
+          <label for="contactNumber">Contact Number</label><br>
+          <input type="tel" id="contactNumber" required style="width: 100%;"><br><br>
+      
+          <label for="email">Email</label><br>
+          <input type="email" id="email" required style="width: 100%;"><br><br>
+      
+          <label for="timezone">Time Zone</label><br>
+          <select id="timezone" style="width: 100%;" required>
+            <option value="">Select Timezone</option>
+            <option value="IST">IST</option>
+            <option value="UTC">UTC</option>
+            <option value="EST">EST</option>
+          </select><br><br>
+          <h4>Dairy Product Settings</h4>
+          <label for="productType">Default Product Type</label><br>
+          <select id="productType" style="width: 100%;">
+            <option value="">Select Product</option>
+            <option value="Milk">Milk</option>
+            <option value="Cheese">Cheese</option>
+            <option value="Yogurt">Yogurt</option>
+            <option value="Butter">Butter</option>
+            <option value="Ghee">Ghee</option>
+          </select><br><br>
+      
+          <label for="unitPrice">Default Unit Price</label><br>
+          <input type="number" id="unitPrice" step="01" style="width: 100%;"><br><br>
+      
+          <label for="unit">Unit of Measure</label><br>
+          <select id="unit" style="width: 100%;">
+            <option value="">Select Unit</option>
+            <option value="Litre">Litre</option>
+            <option value="Kg">Kilogram</option>
+            <option value="Piece">Piece</option>
+          </select><br><br>
+      
+          <label for="storageTemp">Storage Temperature (°C)</label><br>
+          <input type="number" id="storageTemp" style="width: 100%;"><br><br>
+      
+          <button type="submit">Save Settings</button>
+        </form>
+      
+        <!-- Display Output Section -->
+        <div id="output" style="margin-top: 30px; text-align: left;"></div>
+      </div>
+     
+
+    </section>
+
+  <script>
+        //sidebar toggle functionality
+
+let sidebar = document.querySelector(".sidebar");
+let sidebarBtn = document.querySelector(".sidebarBtn");
+
+sidebarBtn.onclick = function () {
+  sidebar.classList.toggle("active");
+
+  if (sidebar.classList.contains("active")) {
+    sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+
+    // ✅ Remove border and border-radius
+    sidebarBtn.style.border = "none";
+    sidebarBtn.style.borderRadius = "0";
+    
+  } else {
+    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+
+    // ✅ Optional: Restore border and border-radius when inactive
+    sidebarBtn.style.border = "1px solid rgb(245, 179, 233)";
+    sidebarBtn.style.borderRadius = "60px";
+  }
+};
+
+
+    document.getElementById("dropdownIcon").addEventListener("click", function () {
+    let dropdown = document.getElementById("dropdownMenu");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", function (event) {
+    let dropdown = document.getElementById("dropdownMenu");
+    let profile = document.querySelector(".profile-details");
+
+    if (!profile.contains(event.target)) {
+        dropdown.style.display = "none";
+    }
+});
+
+document.getElementById("fullscreenIcon").addEventListener("click", function () {
+    let elem = document.documentElement; // Fullscreen the entire page
+    let icon = this;
+
+    if (!document.fullscreenElement) {
+        // Enter fullscreen
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { // Firefox
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { // IE/Edge
+            elem.msRequestFullscreen();
+        }
+        icon.classList.remove("bx-fullscreen");
+        icon.classList.add("bx-exit-fullscreen"); // Change icon
+        icon.setAttribute("title", "Exit Fullscreen");
+    } else {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { // Firefox
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE/Edge
+            document.msExitFullscreen();
+        }
+        icon.classList.remove("bx-exit-fullscreen");
+        icon.classList.add("bx-fullscreen"); // Change back to original icon
+        icon.setAttribute("title", "Enlarge");
+    }
+});
+
+
+
+
+// Listen for fullscreen changes to update the icon dynamically
+document.addEventListener("fullscreenchange", function () {
+    let icon = document.getElementById("fullscreenIcon");
+    if (!document.fullscreenElement) {
+        icon.classList.remove("bx-exit-fullscreen");
+        icon.classList.add("bx-fullscreen");
+        icon.setAttribute("title", "Enlarge");
+    }
+});
+
+document.getElementById("messageIcon").addEventListener("click", function () {
+    let dropdown = document.getElementById("messageDropdown");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", function (event) {
+    let dropdown = document.getElementById("messageDropdown");
+    let messageIcon = document.getElementById("messageIcon");
+
+    if (!messageIcon.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = "none";
+    }
+});
+
+document.getElementById("notificationIcon").addEventListener("click", function () {
+    let dropdown = document.getElementById("notificationDropdown");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", function (event) {
+    let dropdown = document.getElementById("notificationDropdown");
+    let bellIcon = document.getElementById("notificationIcon");
+
+    if (!bellIcon.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = "none";
+    }
+});
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+// Display user's name or username
+if (currentUser) {
+    // Check if the user object has a name property
+    const displayName = currentUser.name || 
+                       currentUser.username || 
+                       (currentUser.email ? currentUser.email.replace(/@gmail\.com|\d+/g, '').trim() : 'Guest');
+    
+    document.getElementById('welcomeMessage').textContent = `Hi, ${displayName}!`;
+} else {
+    // If no user is found, redirect to login
+    alert("Please login first.");
+    window.location.href = "login.html"; // Change to your login page path
+}
+
+
+// When logging in (in your login page)
+localStorage.setItem('currentUser', JSON.stringify({
+    name: "User's Name",  // or whatever properties you have
+    username: "username",
+    email: "user@gmail.com"
+}));
+
+document.getElementById("farmForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const output = document.getElementById("output");
+    const farmName = document.getElementById("farmName").value;
+    const farmLocation = document.getElementById("farmLocation").value;
+    const supplierName = document.getElementById("supplierName").value;
+    const contactNumber = document.getElementById("contactNumber").value;
+    const email = document.getElementById("email").value;
+    const timezone = document.getElementById("timezone").value;
+    const productType = document.getElementById("productType").value;
+    const unitPrice = document.getElementById("unitPrice").value;
+    const unit = document.getElementById("unit").value;
+    const storageTemp = document.getElementById("storageTemp").value;
+
+    output.innerHTML = `
+      <h3>Submitted Settings</h3>
+      <p><strong>Farm Name:</strong> ${farmName}</p>
+      <p><strong>Farm Location:</strong> ${farmLocation}</p>
+      <p><strong>Supplier Name:</strong> ${supplierName}</p>
+      <p><strong>Contact Number:</strong> ${contactNumber}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Time Zone:</strong> ${timezone}</p>
+      <p><strong>Product Type:</strong> ${productType}</p>
+      <p><strong>Unit Price:</strong> ₹${unitPrice}</p>
+      <p><strong>Unit of Measure:</strong> ${unit}</p>
+      <p><strong>Storage Temperature:</strong> ${storageTemp} °C</p>
+    `;
+  });
+  </script>
+</body>
+</html>
